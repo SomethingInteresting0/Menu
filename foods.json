@@ -19,7 +19,7 @@
   { "name": "족발", "tags": ["한식", "고기", "든든함", "안주"], "image": "images/Jokbal.jpg" },
   { "name": "닭도리탕", "tags": ["한식", "고기", "국물", "따뜻함", "맵다", "든든함", "안주"], "image": "images/Dakdori.jpg" },
   { "name": "닭발", "tags": ["한식", "고기", "맵다", "안주"], "image": "images/Dakbal.jpg" },
-  { "name": "백숙/삼계탕", "tags": ["한식", "고기", "국물", "따뜻함", "건강", "든든함"], "image": "images/Ssamge.jpg" },
+  { "name": "백숙/삼계탕", "tags": ["한식", "고기", "국물", "따뜻함", "든든함"], "image": "images/Ssamge.jpg" },
   { "name": "양념/간장 치킨", "tags": ["한식", "양식", "고기", "튀김", "따뜻함", "패스트푸드", "안주"], "image": "images/Chiken.jpg" },
 
   { "name": "고등어조림", "tags": ["한식", "맵다", "해산물", "국물", "따뜻함", "든든함", "밥"], "image": "images/Macronjjorim.jpg" },
