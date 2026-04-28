@@ -220,11 +220,12 @@ function makeReason(f, tags, historyMatched) {
   let text = "";
 
   if (tags.length > 0) {
-    text = tags.join(", ");
+    const matchedTags = tags.filter(tag => f.tags.includes(tag)); // 🔥 핵심 수정
+    text = matchedTags.join(", ");
   }
 
   if (historyMatched) {
-    text += " (최근 메뉴)";
+    text += (text ? " " : "") + "(최근 메뉴)";
   }
 
   return text;
