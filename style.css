@@ -480,3 +480,48 @@ body {
 
   z-index: 9999;  /* 🔥 핵심 */
 }
+
+.floating-info {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  width: 180px;
+  padding: 10px 12px;
+  font-size: 11px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  border-radius: 10px;
+  z-index: 9999;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.floating-title {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+
+  background: none;     /* 배경 제거 */
+  border: none;         /* 테두리 제거 */
+
+  color: #fff;          /* X 색상 */
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.close-btn:hover {
+  opacity: 1;
+}

@@ -305,6 +305,10 @@ function showToast(msg) {
   }, 2000);
 }
 
+function closeFloating() {
+  document.getElementById("floatingInfo").style.display = "none";
+}
+
 window.search = search;
 window.randomPick = randomPick;
 
