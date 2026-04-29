@@ -525,3 +525,20 @@ body {
 .close-btn:hover {
   opacity: 1;
 }
+
+footer {
+  text-align: center;      /* 가운데 정렬 */
+  margin-top: 40px;
+  font-size: 10px;         /* 작게 */
+  color: rgba(255,255,255,0.4);  /* 흐리게 */
+}
+
+footer a {
+  color: rgba(80, 80, 80, 0.4);
+  text-decoration: none;
+  margin: 0 6px;
+}
+
+footer a:hover {
+  color: rgba(255,255,255,0.7);  /* hover 시만 살짝 보이게 */
+}
