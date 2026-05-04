@@ -3,7 +3,12 @@ const state = {
   loaded: false
 };
 
-let selectedTags = []; // 🔥 추가
+let selected = {
+  category: [],
+  type: [],
+  taste: [],
+  situation: []
+};
 
 const DOM = {
   result: document.getElementById("result"),
@@ -31,10 +36,30 @@ function getFilters() {
   return selectedTags; // 🔥 변경
 }
 
-function filterFoods(foods, tags) {
+function filterFoods(foods) {
   return foods.filter(f => {
-    if (tags.length === 0) return true;
-    return tags.some(tag => f.tags.includes(tag)); // OR
+
+    if (selected.category.length > 0 &&
+        !selected.category.some(tag => f.tags.includes(tag))) {
+      return false;
+    }
+
+    if (selected.type.length > 0 &&
+        !selected.type.some(tag => f.tags.includes(tag))) {
+      return false;
+    }
+
+    if (selected.taste.length > 0 &&
+        !selected.taste.some(tag => f.tags.includes(tag))) {
+      return false;
+    }
+
+    if (selected.situation.length > 0 &&
+        !selected.situation.some(tag => f.tags.includes(tag))) {
+      return false;
+    }
+
+    return true;
   });
 }
 
@@ -107,7 +132,7 @@ function search() {
     return;
   }
 
-  const tags = getFilters();
+  const tags = Object.values(selected).flat();
 
   let filtered;
   let decorated;
@@ -120,7 +145,7 @@ function search() {
       reason: f.tags.join(", ")
     }));
   } else {
-    filtered = filterFoods(state.foods, tags);
+    filtered = filterFoods(state.foods);
 
     if (filtered.length === 0) {
       if (DOM.message) DOM.message.textContent = "검색 결과 없음";
@@ -236,16 +261,19 @@ document.addEventListener("click", (e) => {
   if (!e.target.classList.contains("tag-btn")) return;
 
   const tag = e.target.dataset.tag;
+  const group = e.target.dataset.group;
 
-  if (selectedTags.includes(tag)) {
-    selectedTags = selectedTags.filter(t => t !== tag);
+  const arr = selected[group];
+
+  if (arr.includes(tag)) {
+    selected[group] = arr.filter(t => t !== tag);
     e.target.classList.remove("active");
   } else {
-    selectedTags.push(tag);
+    selected[group].push(tag);
     e.target.classList.add("active");
   }
 
-  renderSelectedTags(); // 🔥 추가
+  renderSelectedTags();
   search();
 });
 
@@ -256,13 +284,15 @@ function renderSelectedTags() {
 
   container.innerHTML = "";
 
-  selectedTags.forEach(tag => {
+  Object.values(selected).flat().forEach(tag => {
     const el = document.createElement("div");
     el.className = "selected-tag";
     el.innerHTML = `${tag} <span>✕</span>`;
 
     el.onclick = () => {
-      selectedTags = selectedTags.filter(t => t !== tag);
+      for (let key in selected) {
+        selected[key] = selected[key].filter(t => t !== tag);
+      }
 
       document.querySelectorAll(".tag-btn").forEach(btn => {
         if (btn.dataset.tag === tag) {
@@ -279,18 +309,18 @@ function renderSelectedTags() {
 }
 
 document.getElementById("clear-tags").onclick = () => {
-  // 선택된 태그 초기화
-  selectedTags = [];
+  selected = {
+    category: [],
+    type: [],
+    taste: [],
+    situation: []
+  };
 
-  // 버튼 active 전부 제거
   document.querySelectorAll(".tag-btn").forEach(btn => {
     btn.classList.remove("active");
   });
 
-  // 상단 태그 UI 초기화
   renderSelectedTags();
-
-  // 전체 리스트 다시 출력
   search();
 };
 
