@@ -1,0 +1,68 @@
+/* =========================================================
+   기본 설정 / 색상
+========================================================= */
+
+:root {
+    /* Main */
+    --color-primary: #368B68;
+    --color-hover: #FFCB9F;
+
+    /* Background */
+    --color-background: #F1F1F1; /* 가장 뒤의 배경 */
+    --color-surface: #F4E8D2; /* 그다음 뒤의 배경 */
+    
+
+   /* card */
+    --color-card: #FFFDF5;
+    --color-food-card: #f1f1f1;
+    --color-selected-button: #db7d2a;
+
+    /* Text */
+    --color-text: #263440; /* 기본 택스트 */
+    --color-sub-text: #F2F2F2;  /* 반전 텍스트 (선택된 텍스트, 초록 배겨 택스트) */
+    --color-text-muted: #C0C0C0; /* 잘 안보이게 한 텍스트 */
+
+    /* Border */
+    --color-border: #B9DFC8;
+
+
+}
+
+/* 모든 요소의 크기 계산 안정화 */
+* {
+  box-sizing: border-box;
+}
+
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes wobble-hor-bottom {
+  0%,
+  100% {
+    transform: translateX(0%) rotate(0deg);
+    transform-origin: 50% 50%;
+  }
+  15% {
+    /* 기존: -10px, -2deg -> 초슬림 수정: -3px, -0.8deg */
+    transform: translateX(-3px) rotate(-0.8deg);
+  }
+  30% {
+    /* 기존: 5px, 2deg -> 초슬림 수정: 2.5px, 0.6deg */
+    transform: translateX(2.5px) rotate(0.6deg);
+  }
+  45% {
+    /* 기존: -4px, -1.2deg -> 초슬림 수정: -1.8px, -0.4deg */
+    transform: translateX(-1.8px) rotate(-0.4deg);
+  }
+  60% {
+    /* 기존: 2px, 0.8deg -> 초슬림 수정: 1px, 0.2deg */
+    transform: translateX(1px) rotate(0.2deg);
+  }
+  75% {
+    /* 기존: -1px, -0.4deg -> 초슬림 수정: -0.5px, -0.1deg */
+    transform: translateX(-0.5px) rotate(-0.1deg);
+  }
+}

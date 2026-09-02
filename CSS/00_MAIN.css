@@ -1,0 +1,10 @@
+/* main.css */
+@import url('01_GLOBAL&VARIABLES.CSS');
+@import url('02_HEADER&CONTAINER.CSS');
+@import url('03_FILTER&TAGS.CSS');
+@import url('04_TAB&LISTS.CSS');
+@import url('05_FOOD_CARDS.CSS');
+@import url('06_TOAST&POP_UP.CSS');
+@import url('07_FOOTER.CSS');
+@import url('08_MEDIA-TABLET.css');
+@import url('09_MEDIA-MOBILE.css');

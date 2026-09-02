@@ -1,0 +1,232 @@
+
+/* =========================================================
+   토스트 메시지
+========================================================= */
+
+#toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.31s ease-in-out;
+  z-index: 9999;
+}
+
+
+
+
+/* =========================================================
+   음식 상세 팝업
+========================================================= */
+
+/*
+   팝업이 열려 있을 때
+   배경 페이지 스크롤 방지
+*/
+
+body.modal-open {
+  overflow: hidden;
+}
+
+
+/* 팝업 배경 */
+.food-modal {
+  position: fixed;
+
+  inset: 0;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  z-index: 10000;
+}
+
+
+/* 팝업 활성화 */
+.food-modal.active {
+  display: flex;
+}
+
+
+/* 팝업 본체 */
+.food-modal-content {
+  position: relative;
+
+  width: min(420px, 100%);
+
+  max-height: 90vh;
+
+  background: white;
+
+  border-radius: 16px;
+
+  overflow-y: auto;
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   팝업 닫기 버튼
+========================================================= */
+
+.food-modal-close {
+  position: absolute;
+
+  top: 5px;
+  right: 5px;
+
+  width: 34px;
+  height: 34px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  color: white;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  z-index: 2;
+
+  transition: background 0.2s ease;
+}
+
+
+.food-modal-close:hover {
+  background: rgba(0, 0, 0, 0.75);
+  animation: wobble-hor-bottom 0.8s both;
+}
+
+
+/* =========================================================
+   팝업 음식 이미지
+========================================================= */
+
+.food-modal-image-wrap {
+  width: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+  
+
+  background: #ffffff;
+}
+
+
+.food-modal-image-wrap img {
+  width: 95%;
+  height: 95%;
+  
+  border-radius: 15px;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   팝업 음식 정보
+========================================================= */
+
+.food-modal-body {
+  padding: 0px 3% 3% 3%;
+}
+
+
+#food-modal-title {
+  margin: 0;
+  font-size: 22px;
+  color: var( --color-text);
+}
+
+
+#food-modal-description {
+  margin: 3% 0 3%;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: var(--color-text);
+}
+
+
+/* =========================================================
+   팝업 태그
+========================================================= */
+
+.food-modal-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-bottom: 20px;
+}
+
+
+.food-modal-tag {
+  display: inline-block;
+
+  padding: 5px 9px;
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 10px;
+
+  background: white;
+
+  color: var(--color-text);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   팝업 메뉴 선택 버튼
+========================================================= */
+
+.food-modal-select {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-primary);
+  color:  var(--color-sub-text);
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+
+.food-modal-select:hover {
+  animation: wobble-hor-bottom 0.8s both;
+}
