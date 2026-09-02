@@ -1,5 +1,5 @@
-import { state, selected, resetSelected } from "./STATE.js";
-import { playHoverSound, playClickSound, showToast, showTab } from "./UTILS.js";
+import { state, selected, resetSelected } from "./state.js";
+import { playHoverSound, playClickSound, showToast, showTab } from "./utils.js";
 
 /* =========================
    DOM 요소
@@ -39,7 +39,7 @@ const DOM = {
 /* =========================
    음식 데이터 불러오기
 ========================= */
-fetch("./JS/FOODS.json")
+fetch("./JS/foods.json")
   .then(res => {
     if (!res.ok) {
       throw new Error("foods.json 파일을 불러올 수 없습니다.");
