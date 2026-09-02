@@ -12,7 +12,7 @@
   .filters {
     display: flex !important;
     flex-direction: column !important;
-    width: 90% !important;
+    width: 80% !important;
     margin: 0 auto 16px auto !important;
     border-radius: 14px !important;
   }
@@ -71,7 +71,7 @@
     align-items: center;
     justify-content: center;
     gap: 0px !important;
-    width: 90% !important;
+    width: 80% !important;
     margin: 0 auto 16px auto !important;
     padding: 12px 16px !important;
   }
@@ -131,7 +131,7 @@
 
   /* 탭 및 결과 카드 */
   .tab-container {
-    width: 90% !important;
+    width: 80% !important;
     margin: 15px auto !important;
   }
 

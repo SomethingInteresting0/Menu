@@ -8,7 +8,7 @@
 .tab-container {
   grid-column: 1 / -1;
 
-  width: min(1300px, 92%);
+  width: min(1300px, 80%);
   margin: 30px auto;
   border-radius: 16px;
 
@@ -16,6 +16,7 @@
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
   overflow: hidden; /* 내부 스크롤을 탭 박스 안에 가둠 */
   border: 1px solid var(--color-border);
@@ -124,17 +125,28 @@
 
 /* 결과 카드 목록 */
 #result {
-  list-style: none;
-  display: grid !important; /* 항상 Grid 적용 */
+list-style: none;
+  display: grid !important; 
   
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+  /* 카드가 최소 240px, 공간이 남으면 균등하게 채우되 */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
 
-  gap: 10px;
-  padding: 10px; /* 상단 패딩(top)을 0으로 설정하여 상단 밀착 */
-  margin: 0;               /* 기본 margin 제거 */
+  /* 빈 공간이 남을 때 카드들이 양옆으로 무식하게 퍼지지 않고 가운데로 모이게 함 */
+  justify-content: center;
+
+  gap: 20px;
+  padding: 10px; 
+  margin: 0 auto;       
   width: 100%;
-
+  max-width: 1200px; /* 전체 그리드가 너무 넓어지는 것 방지 (원하는 크기로 조절 가능) */
   box-sizing: border-box;
+}
+
+/* #result 안에 들어가는 각 카드 요소 */
+#result li.card {
+  width: 100%;
+  max-width: 300px; /* 카드가 커질 수 있는 마지노선 (원하는 크기로 조절) */
+  margin: 0 auto;   /* 카드가 커지다 멈췄을 때 가운데 정렬 */
 }
 
 
