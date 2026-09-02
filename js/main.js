@@ -55,7 +55,7 @@ fetch("./js/foods.json")
 
       return {
         ...food,
-        image: `ASSETS/food_images/${fileName}.jpg`
+        image: `assets/food_images/${fileName}.jpg`
     };
   });
 

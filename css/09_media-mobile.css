@@ -237,9 +237,7 @@
   #result {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 8px;
-    padding: 0 1px 13px 1px; /* 상단 패딩(top)을 0으로 설정하여 상단 밀착 */
-    margin: 0;               /* 기본 margin 제거 */
-    width: 100%;
+
   }
 
   .card-title {

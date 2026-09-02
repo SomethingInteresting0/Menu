@@ -1,8 +1,8 @@
 /* =========================
    오디오 요소 (MP3 재생)
 ========================= */
-const hoverAudio = new Audio('./ASSETS/audio/Hover.mp3');
-const clickAudio = new Audio('./ASSETS/audio/Click.mp3');
+const hoverAudio = new Audio('./assets/audio/Hover.mp3');
+const clickAudio = new Audio('./assets/audio/Click.mp3');
 
 // 볼륨 조절 (0.0 ~ 1.0)
 hoverAudio.volume = 0.3; // 올렸을 때 소리
