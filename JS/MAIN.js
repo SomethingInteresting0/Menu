@@ -39,7 +39,7 @@ const DOM = {
 /* =========================
    음식 데이터 불러오기
 ========================= */
-fetch("./JS/foods.json")
+fetch("./js/foods.json")
   .then(res => {
     if (!res.ok) {
       throw new Error("foods.json 파일을 불러올 수 없습니다.");
@@ -55,7 +55,7 @@ fetch("./JS/foods.json")
 
       return {
         ...food,
-        image: `ASSETS/FOOD_IMAGE/${fileName}.jpg`
+        image: `ASSETS/food_images/${fileName}.jpg`
     };
   });
 
