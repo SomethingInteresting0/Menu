@@ -1,0 +1,305 @@
+/* =========================================================
+   필터 영역 (PC 기본)
+========================================================= */
+
+.arrow-icon {
+  display: none; /* PC에서는 화살표 숨김 */
+}
+
+/* 1. 필터 전체 그리드 설정 (1열: 타이틀, 2열: 태그) */
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 6fr; /* 1열: 카테고리, 2열: 태그 */
+  align-items: stretch; /* 💥 중요: 양쪽 컬럼 높이를 동일하게 100%로 맞춤 */
+  
+  width: 80%;
+  margin: 0 auto;
+  
+  background-color: var(--color-card);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  overflow: hidden; /* 모서리 자르기 및 보더 깔끔하게 정리 */
+}
+
+/* details 껍데기를 무력화하여 내부 요소가 바로 .filters 그리드로 연결되게 설정 */
+details.filter-category,
+.filter-category {
+  display: contents;
+}
+
+/* 카테고리 타이틀 영역 (왼쪽 표 칸) */
+.category-header {
+  grid-column: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none; /* PC에서는 클릭 차단 */
+  
+  width: 100%;
+  height: 100%; /* 부모 그리드 높이에 맞춤 */
+  padding: 16px;
+  box-sizing: border-box;
+  
+  background-color: var(--color-card);
+  
+  /* PC 전용 표 구분선 */
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  
+  cursor: default;
+  list-style: none; /* 파이어폭스 기본 화살표 제거 */
+}
+
+/* 제목 텍스트 위치 고정 */
+.filter-title h3 {
+  margin: 0;
+  /* ⚡ 최소 13px ~ 화면 너비의 1.2vw ~ 최대 17px 사이에서 부드럽게 변함 */
+  font-size: clamp(13px, 1.1vw + 4%, 17px);
+  font-weight: 600;
+}
+
+/* 2열: 태그 상자 (오른쪽 표 칸) */
+.filter-box {
+  grid-column: 2;
+  display: flex !important; /* flex로 설정하여 내부 tag-container 정렬 */
+  align-items: center; /* 태그 컨테이너 세로 중앙 정렬 */
+  
+  width: 100%;
+  height: 100%;
+  padding: 16px; /* calc 및 margin 대신 filter-box에 안쪽 여백 일괄 부여 */
+  box-sizing: border-box;
+  
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* =========================================================
+   카테고리 아코디언 스타일 (고정형)
+========================================================= */
+
+/* 기본 브라우저 화살표 제거 */
+details.filter-category summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 2. details 껍데기를 무력화하여 내부 요소가 바로 .filters 그리드로 연결되게 설정 */
+.filter-category {
+  width: 100%; /* 부모 너비에 딱 맞게 고정 */
+  box-sizing: border-box;
+  display: contents;
+  background-color: var(--color-card);
+
+  
+  /* 💥 오른쪽 세로 구분선 추가 */
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  box-sizing: border-box; /* 테두리가 들어가도 전체 너비가 넘치지 않게 고정 */
+}
+
+/* 카테고리 헤더 (크기 및 모양 완전 고정) */
+.category-header {
+  grid-column: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none; /* PC에서는 클릭 차단 */
+  
+  width: 100%;
+  height: 100%; /* 높이를 딱 고정해서 열려도 크기 안 변함 */
+  padding: 0 16px;
+  box-sizing: border-box;
+  
+  background-color: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  border-radius: 10px 0px 0px 0px;
+  
+  cursor: default;
+  list-style: none; /* 파이어폭스 기본 화살표 제거 */
+}
+
+
+/* 4. 2열: 태그 상자 */
+.filter-box {
+  grid-column: 2;
+  align-items: center;
+  justify-content: center;
+  display: block !important; /* PC에서는 무조건 노출 */
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+
+
+/* =========================================================
+   태그 버튼
+========================================================= */
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px; /* 태그 간 세로/가로 간격 설정 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 기본 태그 버튼 */
+.tag-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-card);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 13px;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.tag-btn:hover {
+  background: var(--color-hover);
+  color: var(--color-text);
+  animation: wobble-hor-bottom 0.8s both;
+}
+
+.tag-btn.active {
+  background: var(--color-selected-button);
+  color: var(--color-sub-text);
+  border-color: var(--color-border);
+}
+
+
+
+
+/* =========================================================
+   선택된 태그 영역
+========================================================= */
+
+#selected-tags-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: auto 1fr auto; 
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 5px;
+  width: 80%;
+  margin: 1% auto; 
+  box-sizing: border-box;
+
+  background-color: var(--color-card);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+}
+
+#selected-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 0px;
+}
+
+.selected-tag {
+  padding: 6px 10px;
+  background: var(--color-selected-button);
+  color: var(--color-sub-text);
+  border-radius: 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   선택된 태그 text
+========================================================= */
+
+#selected-tag-text {
+  font-size: clamp(13px, 1.1vw + 4%, 16px);
+  padding-left: 5px;
+}
+
+#selected-tag-text h3 {
+  font-size: 16px;
+}
+
+/* =========================================================
+   선택된 태그 전체 초기화
+========================================================= */
+
+
+/* 전체 초기화 */
+#clear-tags {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-primary);
+  color: var(--color-sub-text);
+  cursor: pointer;
+  margin-right: 5px;
+  transition: 0.2s ease;
+}
+
+#clear-tags h3 {
+  margin: 6px;
+  font-size: clamp(13px, 1.1vw + 4%, 17px);
+}
+
+#clear-tags:hover {
+  animation: wobble-hor-bottom 0.8s both;
+}
+
+
+/* =========================================================
+   렌덤 추천 버튼
+========================================================= */
+
+.random-button-container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  
+  /* 💥 상단 .filters와 너비 및 중앙 정렬 맞춤 */
+  width: 95%;
+  margin: 0 auto; 
+  box-sizing: border-box; /* 패딩/테두리가 포함되어 너비가 넘치지 않게 고정 */
+  
+  background: transparent;
+}
+
+
+.random-button {
+  padding: 0px 40px;
+
+  border-color: var(--color-border);
+  border-radius: 5px;
+
+  background: var(--color-primary);
+  color: var(--color-sub-text);
+
+  /* 💥 높이를 딱 맞추기 위한 핵심 추가 속성 */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1; /* 글자 세로 여백 제거 */
+
+
+  transition: background 0.2s ease;
+}
+
+.random-button h3 {
+  font-size: 16px;
+}
+
+.random-button:hover {
+  animation: wobble-hor-bottom 0.8s both;
+}
+
+
+

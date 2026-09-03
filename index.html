@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<!--맨 위의 제목이나 메뉴바를 담는 상자-->
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 💥 이 줄이 없으면 F12 모바일 모드에서 미디어 쿼리가 작동하지 않습니다! -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- 기본 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="한식, 중식, 일식, 양식 등 다양한 메뉴를 취향과 상황에 맞게 추천합니다. 음식 태그 필터와 랜덤 메뉴 추천, 식사 기록 기능을 제공합니다.">
+
+  <!-- SEO -->
+  <title>PICK MENU! | 한식, 중식, 양식, 취향별, 상황별 음식 추천 및 렌덤 추천</title>
+
+
+  <!--ICON-->
+  <link rel="icon" href="./assets/icon.png">
+  <link rel="icon" href="./img/favicon.png">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/00_main.css">
+
+
+
+  <!-- Google AdSense -->
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3832407629486566"
+    crossorigin="anonymous">
+  </script>
+
+</head>
+
+
+
+
+<body>
+
+  <div id="toast"></div>
+
+    <!-- ==================================================
+        메인 컨테이너
+        ================================================== -->
+    <main class="container">
+
+      <!-- 사이트 제목 -->
+      <h1 class="title">PICK MENU!</h1>
+      <p class="subtitle">조건별 메뉴/음식 추천 사이트</p>
+
+
+    <!-- ==================================================
+      음식 필터
+  ================================================== -->
+  <section class="filters">
+
+    <!-- 1. 카테고리 -->
+    <details class="filter-category" open>
+      <summary class="category-header">
+        <div class="filter-title">
+          <h3>장르</h3>
+        </div>
+        <span class="arrow-icon"></span>
+      </summary>
+      <div class="filter-box">
+        <div class="tag-container">
+          <button class="tag-btn" data-tag="한식" data-group="category">한식</button>
+          <button class="tag-btn" data-tag="중식" data-group="category">중식</button>
+          <button class="tag-btn" data-tag="일식" data-group="category">일식</button>
+          <button class="tag-btn" data-tag="양식" data-group="category">양식</button>
+          <button class="tag-btn" data-tag="아시안" data-group="category">아시안</button>
+          <button class="tag-btn" data-tag="분식" data-group="category">분식</button>
+          <button class="tag-btn" data-tag="패스트 푸드" data-group="category">패스트 푸드</button>
+          <button class="tag-btn" data-tag="카페/간식" data-group="category">카페/간식</button>
+
+        </div>
+      </div>
+    </details>
+
+    <!-- 2. 형태 / 구성 -->
+    <details class="filter-category" open>
+      <summary class="category-header">
+        <div class="filter-title">
+          <h3>주 재료/형태</h3>
+        </div>
+        <span class="arrow-icon"></span>
+      </summary>
+      <div class="filter-box">
+        <div class="tag-container">
+          <button class="tag-btn" data-tag="고기" data-group="type">고기</button>
+          <button class="tag-btn" data-tag="빵" data-group="type">빵</button>
+          <button class="tag-btn" data-tag="밥" data-group="type">밥</button>
+          <button class="tag-btn" data-tag="면" data-group="type">면</button>
+          <button class="tag-btn" data-tag="해산물" data-group="type">해산물</button>
+          <button class="tag-btn" data-tag="튀김" data-group="type">튀김</button>
+          <button class="tag-btn" data-tag="국물/찌개" data-group="type">국물/찌개</button>
+          <button class="tag-btn" data-tag="채소" data-group="type">채소</button>
+          <button class="tag-btn" data-tag="수프/죽" data-group="type">수프/죽</button>
+          <button class="tag-btn" data-tag="음료" data-group="type">음료</button>
+          <button class="tag-btn" data-tag="치즈" data-group="type">치즈</button>
+          <button class="tag-btn" data-tag="유제품" data-group="type">유제품</button>
+          <button class="tag-btn" data-tag="떡" data-group="type">떡</button>
+          <button class="tag-btn" data-tag="두부" data-group="type">두부</button>
+        </div>
+      </div>
+    </details>
+
+    <!-- 3. 맛 / 온도 -->
+    <details class="filter-category" open>
+      <summary class="category-header">
+        <div class="filter-title">
+          <h3>맛/식감/온도</h3>
+        </div>
+        <span class="arrow-icon"></span>
+      </summary>
+      <div class="filter-box">
+        <div class="tag-container">
+          <button class="tag-btn" data-tag="매콤" data-group="taste">매콤</button>
+          <button class="tag-btn" data-tag="고소" data-group="taste">고소</button>
+          <button class="tag-btn" data-tag="담백" data-group="taste">담백</button>
+          <button class="tag-btn" data-tag="따뜻함" data-group="taste">따뜻함</button>
+          <button class="tag-btn" data-tag="시원함" data-group="taste">시원함</button>
+          <button class="tag-btn" data-tag="새콤" data-group="taste">새콤</button>
+          <button class="tag-btn" data-tag="달콤" data-group="taste">달콤</button>
+          <button class="tag-btn" data-tag="바삭함" data-group="taste">바삭함</button>
+          <button class="tag-btn" data-tag="쫄깃함" data-group="taste">쫄깃함</button>
+          <button class="tag-btn" data-tag="단짠" data-group="taste">단짠</button>
+          <button class="tag-btn" data-tag="깔끔" data-group="taste">깔끔</button>
+          <button class="tag-btn" data-tag="짭짤" data-group="taste">짭짤</button>
+        </div>
+      </div>
+    </details>
+
+    <!-- 4. 상황 -->
+    <details class="filter-category" open>
+      <summary class="category-header">
+        <div class="filter-title">
+          <h3>포만감</h3>
+        </div>
+        <span class="arrow-icon"></span>
+      </summary>
+      <div class="filter-box">
+        <div class="tag-container">
+          <button class="tag-btn" data-tag="가벼움" data-group="situation">가벼움</button>
+          <button class="tag-btn" data-tag="든든함" data-group="situation">든든함</button>
+        </div>
+      </div>
+    </details>
+
+    <details class="filter-category" open>
+      <summary class="category-header">
+        <div class="filter-title">
+          <h3>상황</h3>
+        </div>
+        <span class="arrow-icon"></span>
+      </summary>
+      <div class="filter-box">
+        <div class="tag-container">
+          <button class="tag-btn" data-tag="혼밥" data-group="situation">혼밥</button>
+          <button class="tag-btn" data-tag="2~3인 (공유)" data-group="situation">2~3인 (공유)</button>
+          <button class="tag-btn" data-tag="단체/회식" data-group="situation">단체/회식</button>
+          <button class="tag-btn" data-tag="데이트" data-group="situation">데이트</button>
+          <button class="tag-btn" data-tag="야식" data-group="situation">야식</button>
+          <button class="tag-btn" data-tag="해장" data-group="situation">해장</button>
+          <button class="tag-btn" data-tag="안주" data-group="situation">안주</button>
+          <button class="tag-btn" data-tag="길거리 음식" data-group="situation">길거리 음식</button>
+          <button class="tag-btn" data-tag="다이어트식" data-group="situation">다이어트식</button>
+          <button class="tag-btn" data-tag="간식" data-group="situation">간식</button>
+        </div>
+      </div>
+    </details>
+
+  </section>
+
+
+    <!-- ==================================================
+         현재 선택된 태그
+         ================================================== -->
+    <section id="selected-tags-wrap">
+      
+      <section id="selected-tag-text"> 
+        <h3>선택된 태그</h3>
+      </section>
+
+      <div id="selected-tags"></div>
+
+      <section id="clear-container">
+        <button id="clear-tags">
+          <h3>전체 초기화</h3>
+        </button>
+      </section>
+
+    </section>
+
+
+    <!-- ==================================================
+         렌덤 추천
+         ================================================== -->
+    <div class="random-button-container">
+
+      <button class="random-button" onclick="randomPick()">
+        <h3>랜덤 추천</h3>
+      </button>
+
+    </div>
+
+
+    <!-- ==================================================
+         메뉴 / 식사 기록 탭
+         ================================================== -->
+    <section class="tab-container">
+
+      <!-- 탭 버튼 -->
+      <div class="tab-buttons">
+
+        <button class="active" onclick="showTab(event, 'list')">
+          <h3>메뉴 리스트</h3>
+        </button>
+
+        <button onclick="showTab(event, 'historyTab')">
+          <h3>식사 기록</h3>
+        </button>
+
+      </div>
+
+
+      <!-- 탭 내용 -->
+      <div class="tab-content">
+
+        <!-- ==================================================
+          메뉴 리스트
+        ================================================= -->
+        <div id="list" class="tab active">
+
+          <!-- 검색 결과 없음 / 로딩 메시지 -->
+          <div id="message"></div>
+          
+          <!-- 일반 검색 결과 -->
+          <ul id="result"></ul>
+        
+        
+          <!-- 랜덤 추천 -->
+          <div id="random-recommendation" class="random-recommendation">
+
+              <h3 class="random-title">
+                  렌덤 메뉴 추천!
+              </h3>
+
+              <div class="random-food">
+
+                  <div class="random-image-wrap">
+                      <img
+                          id="random-image"
+                          class="random-image"
+                          src=""
+                          alt=""
+                      >
+                  </div>
+
+                  <div class="random-info">
+
+                      <h3
+                          id="random-food-name"
+                          class="random-food-name"
+                      ></h3>
+
+                      <p
+                          id="random-description"
+                          class="random-description"
+                      ></p>
+
+                      <div
+                          id="random-tags"
+                          class="random-tags"
+                      ></div>
+
+                  </div>
+
+              </div>
+
+              <button
+                  id="random-select"
+                  class="random-select"
+              >
+                  이 메뉴 고르기
+              </button>
+
+          </div>
+        </div>
+
+
+        <!-- ==================================================
+             식사 기록
+             ================================================== -->
+        <div
+          id="historyTab"
+          class="tab">
+
+          <!--
+            JavaScript가 식사 기록을 여기에 추가함.
+
+            기록이 많아지면 CSS에서
+            max-height + overflow-y: auto
+            를 적용하여 내부 스크롤이 생김.
+          -->
+          <ul id="history"></ul>
+
+
+          <!-- 기록 초기화 -->
+          <div class="history-bottom">
+
+            <button
+              class="btn-primary"
+              onclick="clearHistory()">
+              기록 초기화
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+      
+    <!-- ==================================================
+         푸터
+         ================================================== -->
+
+      <!-- 사이트 사용 방법 -->
+      <section class="site-guide">
+
+        <h2>PICK MENU! 사용 설명서</h2>
+
+        <p class="guide-intro">
+          조건 선택부터 랜덤 추천까지, <br class="mo-only"> 오늘 당신을 위한 최적의 메뉴를 찾아드립니다.
+        </p>
+
+        <div class="guide-grid">
+
+          <!-- 조건 추천 -->
+          <div class="guide-item">
+            <h3><span>01</span> 맞춤 조건 추천</h3>
+
+            <p>
+              원하는 태그를 선택하면 <br> 조건에 맞는 메뉴만 모아서 <br> 보여드립니다.
+            </p>
+            
+
+            <p>
+              카드를 클릭해 상세 정보를 확인하고 <br>「이 메뉴 고르기」로 <br> 기록을 남겨보세요.
+            </p>
+          </div>
+
+          <!-- 랜덤 추천 -->
+          <div class="guide-item">
+            <h3><span>02</span> 원클릭 랜덤 추천</h3>
+
+            <p>
+              메뉴 고민도 귀찮을 땐 <br>「랜덤 추천」 버튼 하나로 <br> 무작위 추천을 받아보세요!
+            </p>
+          </div>
+
+          <!-- 식사 기록 -->
+          <div class="guide-item">
+            <h3><span>03</span> 식사 기록 관리</h3>
+
+            <p>
+              내가 고른 메뉴들은 식사 기록에 <br> 저장되어 최근에 무엇을 먹었는지 <br> 한눈에 확인할 수 있습니다.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+    <footer>
+      <a href="/privacy.html">
+        개인정보처리방침
+      </a>
+
+      <a href="/terms.html">
+        이용약관
+      </a>
+
+    </footer>
+
+  </main>
+
+
+  <!-- ==================================================
+       음식 카드 템플릿
+       ================================================== -->
+
+  <template id="food-card-template">
+
+    <li class="card">
+
+      <div class="card-img">
+
+        <img
+          class="card-image"
+          src=""
+          alt="food">
+
+      </div>
+
+      <div class="card-body">
+
+        <div class="card-title"></div>
+
+        <div class="card-reason"></div>
+
+      </div>
+
+    </li>
+
+  </template>
+
+
+  <!-- ==================================================
+       음식 상세 팝업
+       ================================================== -->
+
+  <div
+    id="food-modal"
+    class="food-modal">
+
+    <div class="food-modal-content">
+
+
+      <!-- 닫기 버튼 -->
+      <button
+        id="food-modal-close"
+        class="food-modal-close"
+        aria-label="음식 상세 팝업 닫기">
+        ✕
+      </button>
+
+
+      <!-- 음식 이미지 -->
+      <div class="food-modal-image-wrap">
+
+        <img
+          id="food-modal-image"
+          src=""
+          alt="">
+
+      </div>
+
+
+      <!-- 음식 정보 -->
+      <div class="food-modal-body">
+
+
+        <!-- 음식 이름 -->
+        <h2 id="food-modal-title"></h2>
+
+
+        <!-- 음식 설명 -->
+        <p id="food-modal-description"></p>
+
+
+        <!-- 음식 태그 -->
+        <div
+          id="food-modal-tags"
+          class="food-modal-tags">
+        </div>
+
+
+        <!-- 메뉴 선택 -->
+        <button
+          id="food-modal-select"
+          class="food-modal-select">
+          이 메뉴 고르기
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- JavaScript -->
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>

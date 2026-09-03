@@ -1,0 +1,301 @@
+/* =========================================================
+   모바일 미디어 쿼리 (480px 이하) - 전체 리셋 및 최적화
+========================================================= */
+
+@media (max-width: 480px) {
+
+  /* --- 1. 기본 레이아웃 --- */
+  .container {
+    width: 95% !important;
+    margin: 12px auto !important;
+    padding: 0 4px !important;
+    box-sizing: border-box !important;
+  }
+
+  .title {
+    font-size: 30px !important;
+    text-align: center !important;
+    margin: 10px 0 !important;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    margin: -15px 0 15px 0;
+  }
+
+  /* --- 2. 아코디언 및 필터 (꽉 찬 모바일 뷰어) --- */
+  .filters {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 85% !important;
+    border-radius: 10px !important;
+    margin: 5px auto !important; /* ⚡ 아래 덩어리와의 간격 확보 */
+  }
+
+  .filter-box {
+    height: auto !important;
+    min-height: 40px !important; /* 적어도 40px은 유지하되, 내용이 많으면 자동으로 길어짐 */
+    padding: 5px !important;
+  }
+
+  details.filter-category {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .category-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 35px !important; /* 모바일 적정 헤더 높이 */
+    box-sizing: border-box !important;
+    background-color: var(--color-background) !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    border-radius: 0 !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+
+  .arrow-icon {
+    display: inline-block !important;
+    font-size: 12px !important;
+  }
+
+  details.filter-category .arrow-icon::before {
+    content: "▼";
+  }
+
+  details.filter-category[open] .arrow-icon::before {
+    content: "▲";
+  }
+
+  /* ⚡ [태그 상자] 세로 여백 최대로 압축하여 세로 길이 축소 */
+  .tag-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    margin: 2px auto !important;
+    gap: 2px;
+    box-sizing: border-box !important;
+  }
+
+  .tag-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 4px 10px !important; /* 버튼 자체 여백 줄임 */
+    font-size: 12px !important;
+    min-height: 30px !important; /* 높이 타이트하게 고정 */
+    line-height: 1 !important;
+  }
+
+  /* --- 3. 선택된 태그 영역 --- */
+  #selected-tags-wrap {
+    display: flex !important;
+    flex-wrap: wrap !important; /* 내용물이 넓게 퍼지도록 설정 */
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 10px 12px !important;
+    width: 85% !important;
+    margin: 5px auto !important; /* ⚡ 위/아래 덩어리 간격 16px 확보 */
+    border-radius: 12px !important;
+  }
+
+  /* --- 2. "선택된 태그" 텍스트 (상단 왼쪽 고정) --- */
+  #selected-tag-text {
+    font-size: 10px !important;
+    padding: 0 !important;
+    margin-right: auto !important; /* 좌측 상단 배치 */
+  }
+
+  #selected-tag-text h3 {
+    font-size: 14px !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* --- 3. 태그 리스트: 가로 100%를 다 쓰면서 양옆 빈공간 채우기 --- */
+  #selected-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important; /* 왼쪽부터 꽉 차게 나열 */
+    align-items: center !important;
+    gap: 6px !important;
+    width: 100% !important; /* ⚡ 핵심: 가로 전체 공간을 꽉 채움 */
+    padding: 4px 0 !important;
+    order: 2; /* 텍스트 아래로 순서 배치 */
+  }
+
+  .selected-tag {
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    border-radius: 6px !important;
+  }
+
+ /* --- 4. "전체 초기화" 버튼 (상단 오른쪽 또는 하단 우측 배치) --- */
+  #clear-tags {
+    padding: 4px 8px !important;
+    border-radius: 6px !important;
+    order: 1; /* "선택된 태그" 텍스트와 같은 줄 우측에 배치 */
+  }
+
+  #clear-tags h3 {
+    font-size: 13px !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+  }
+
+
+  #selected-tags-wrap > :nth-child(1) {
+    align-self: flex-start !important;
+    width: auto !important;
+  }
+
+  #selected-tags-wrap > :nth-child(2) {
+    align-self: center !important;
+    width: 100% !important;
+  }
+
+  #selected-tags-wrap > :nth-child(3) {
+    align-self: flex-end !important;
+    width: auto !important;
+  }
+
+  /* --- 4. 랜덤 추천 카드 --- */
+ .random-recommendation {
+    width: 90% !important; /* 모바일 화면 좌우 갭 거의 없이 정중앙 조율 */
+    padding: 14px 12px !important; /* 패딩 축소하여 세로/가로 공간 확보 */
+    margin: 0px auto 5px auto !important; /* ⚡ 선택된 태그와 탭 영역 사이에 간격 부여 */
+    border-radius: 12px !important;
+  }
+
+  .random-title {
+    margin: 0 0 10px !important;
+    font-size: 16px !important;
+  }
+
+  .random-food {
+    flex-direction: column !important; /* 모바일에서는 세로 정렬 */
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .random-image-wrap {
+    flex: none !important;
+    width: 100% !important;
+  }
+
+  .random-image {
+    width: 100% !important;
+    height: 180px !important; /* 모바일 화면 맞춤 높이 */
+    object-fit: cover !important;
+  }
+
+  .random-info {
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .random-food-name {
+    font-size: 18px !important;
+    text-align: center !important; /* 모바일 제목 중앙 정렬 */
+  }
+
+  .random-description {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .random-tags {
+    justify-content: center !important; /* 태그 중앙 정렬 */
+  }
+
+  /* --- 5. 탭 및 결과 카드리스트 --- */
+  .tab-container {
+    width: 85% !important;
+    margin: 15px auto !important;
+  }
+
+  .tab-content {
+    height: 100% !important;
+  }
+
+  /* 1. 스크롤바 전체 너비 */
+  #history::-webkit-scrollbar,
+  #list::-webkit-scrollbar {
+    width: 5px;
+    z-index: 2;
+  }
+
+
+  #result {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px;
+
+  }
+
+  .card-title {
+    font-size: 13px !important;
+  }
+
+  .card-reason {
+    font-size: 11px !important;
+  }
+
+  .mo-only {
+    display: block !important;
+  }
+
+  /* --- 6. 이용 안내 (사이트 가이드) --- */
+  .site-guide {
+    width: 85% !important;
+    padding: 16px 12px !important;
+    box-sizing: border-box !important;
+    margin: 5px auto !important;
+  }
+
+  .guide-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin: 0 auto !important;
+  }
+
+  .guide-item {
+    padding: 10px !important;
+  }
+
+  /* --- 7. 음식 상세 모달 (팝업) --- */
+  .food-modal {
+    padding: 12px !important;
+  }
+
+  .food-modal .food-modal-content {
+    width: 80% !important;
+    max-height: 90vh !important;
+    border-radius: 14px !important;
+  }
+
+  .food-modal .food-modal-body {
+    padding: 12px 14px 14px 14px !important;
+  }
+
+  .food-modal #food-modal-title {
+    font-size: 18px !important;
+  }
+
+  .food-modal #food-modal-description {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  /*--footer--*/
+  footer {
+    margin-bottom: 3%;
+  }
+
+}

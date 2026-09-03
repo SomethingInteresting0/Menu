@@ -1,0 +1,152 @@
+/* =========================================================
+   태블릿 미디어 쿼리 (481px ~ 899px)
+========================================================= */
+
+@media (min-width: 481px) and (max-width: 899px) {
+
+  .title {
+    font-size: 35px;
+  }
+
+  /* 아코디언 필터 */
+  .filters {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 80% !important;
+    margin: 0 auto 16px auto !important;
+    border-radius: 14px !important;
+  }
+
+  details.filter-category,
+  .filter-category {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .category-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 46px !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+    background-color: var(--color-background) !important;
+    border-right: none !important;
+    border-radius: 0px;
+    border-bottom: 1px solid var(--color-border) !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+  .filter-title h3 {
+    font-size: 16px;
+  }
+
+  .arrow-icon {
+    display: inline-block !important;
+  }
+
+  details.filter-category .arrow-icon::before { content: "▼"; }
+  details.filter-category[open] .arrow-icon::before { content: "▲"; }
+
+  .filter-box {
+    display: block !important;
+    padding: 12px !important;
+  }
+
+  .tag-container {
+    gap: 8px !important;
+  }
+
+  .tag-btn {
+    padding: 6px 12px !important;
+    font-size: 13px !important;
+  }
+
+  /* 선택된 태그 영역 */
+  #selected-tags-wrap {
+    display: grid;
+    grid-template-columns: auto 1fr auto; 
+    align-items: center;
+    justify-content: center;
+    gap: 0px !important;
+    width: 80% !important;
+    margin: 0 auto 16px auto !important;
+    padding: 12px 16px !important;
+  }
+
+  /* 1. "선택된 태그" 텍스트 */
+  #selected-tag-text {
+    flex-shrink: 0 !important; /* 텍스트 줄바꿈 방지 */
+    font-size: 10px;
+  }
+
+  #selected-tag-text h3 {
+    font-size: 14px;
+    margin: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* 2. 가운데 태그 목록 */
+  #selected-tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex: 1 !important; /* 남은 가운데 공간을 다 차지함 */
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 3. 우측 초기화 버튼 */
+  #clear-tags h3 {
+    font-size: 12px;
+  }
+
+  /* 랜덤 추천 영역 */
+  .random-recommendation {
+    width: 80% !important;
+    padding: 18px !important;
+    margin: 15px auto !important;
+  }
+
+  .random-food {
+    flex-direction: row !important;
+    gap: 16px !important;
+  }
+
+  .random-image-wrap {
+    flex: 1 !important;
+  }
+
+  .random-image {
+    height: 200px !important;
+    object-fit: cover !important;
+  }
+
+  .random-info {
+    flex: 1.2 !important;
+  }
+
+  /* 탭 및 결과 카드 */
+  .tab-container {
+    width: 80% !important;
+    margin: 15px auto !important;
+  }
+
+  .tab-content {
+    height: 55vh !important;
+  }
+
+  #result {
+    grid-template-columns: repeat(3, 1fr) !important; /* 강제 2열 배치로 찌그러짐 방지 */
+    gap: 8px;
+    padding: 0 1px 8px 1px; /* 상단 패딩(top)을 0으로 설정하여 상단 밀착 */
+    margin: 0;               /* 기본 margin 제거 */
+    width: 100%;
+  }
+
+
+
+}

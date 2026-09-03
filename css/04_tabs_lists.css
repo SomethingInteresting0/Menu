@@ -1,0 +1,271 @@
+
+
+
+/* =========================================================
+   탭 전체 영역
+========================================================= */
+
+.tab-container {
+  grid-column: 1 / -1;
+
+  width: min(1300px, 80%);
+  margin: 30px auto;
+  border-radius: 16px;
+
+  background: var(--color-card);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden; /* 내부 스크롤을 탭 박스 안에 가둠 */
+  border: 1px solid var(--color-border);
+}
+
+
+/* =========================================================
+   탭 버튼
+========================================================= */
+
+.tab-buttons {
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.tab-buttons button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: var(--color-background);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.tab-buttons button h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.tab-buttons button:hover {
+  background: var(--color-hover);
+}
+
+.tab-buttons button.active {
+  background: var(--color-card);
+  border-top: 3px solid var(--color-primary);
+}
+
+
+/* =========================================================
+   탭 콘텐츠
+========================================================= */
+
+.tab-content {
+  width: 100%;
+  height: 100%;          /* 고정 높이로 복구하여 전체 페이지 스크롤 방지 */
+  min-height: 500px;
+  max-height: 500px;
+  
+  position: relative;
+  overflow: hidden;      /* 탭 밖으로 자식이 삐져나가지 않게 제한 */
+  box-sizing: border-box;
+}
+
+/* 기본적으로 탭 숨김 */
+.tab {
+  display: none;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* 활성화된 탭 */
+.tab.active {
+  display: block;
+}
+
+
+/* =========================================================
+   메뉴 리스트
+========================================================= */
+
+#list {
+  display: none;
+  height: 100%;
+  overflow-y: auto;     /* ⚡ 리스트가 길어지면 탭 안에서만 스크롤 생성 */
+  padding: 0px 5px;
+  box-sizing: border-box;
+}
+
+
+#list.active {
+  display: block;
+}
+
+
+/* 검색 결과 없음 */
+#message {
+  font-size: 20px;
+  margin: 30px 0;
+
+  text-align: center;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.568);
+}
+
+/* 텍스트가 비어있을 때는 아예 안 보이게 처리 */
+#message:empty {
+  display: none !important;
+  margin: 0 !important;
+}
+
+
+/* 결과 카드 목록 */
+#result {
+list-style: none;
+  display: grid !important; 
+  
+  /* 카드가 최소 240px, 공간이 남으면 균등하게 채우되 */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+
+  /* 빈 공간이 남을 때 카드들이 양옆으로 무식하게 퍼지지 않고 가운데로 모이게 함 */
+  justify-content: center;
+
+  gap: 20px;
+  padding: 10px; 
+  margin: 0 auto;       
+  width: 100%;
+  max-width: 1200px; /* 전체 그리드가 너무 넓어지는 것 방지 (원하는 크기로 조절 가능) */
+  box-sizing: border-box;
+}
+
+/* #result 안에 들어가는 각 카드 요소 */
+#result li.card {
+  width: 100%;
+  max-width: 300px; /* 카드가 커질 수 있는 마지노선 (원하는 크기로 조절) */
+  margin: 0 auto;   /* 카드가 커지다 멈췄을 때 가운데 정렬 */
+}
+
+
+/* =========================================================
+   식사 기록
+========================================================= */
+
+#historyTab {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+
+  min-height: 0;
+}
+
+
+#historyTab.active {
+  display: flex;
+}
+
+
+/*
+   식사 기록 리스트
+
+   핵심:
+   flex: 1
+   min-height: 0
+   overflow-y: auto
+
+   이렇게 하면 기록이 아무리 많아져도
+   기록 영역 안에서 스크롤된다.
+*/
+
+#history {
+  flex: 1;
+
+  min-height: 0;
+
+  overflow-y: auto;
+
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+}
+
+
+/* 1. 스크롤바 전체 너비 */
+#history::-webkit-scrollbar,
+#list::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* 2. 스크롤바 바탕 트랙 (항상 보이는 배경길) */
+#history::-webkit-scrollbar-thumb,
+#list::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+
+#history::-webkit-scrollbar-thumb:hover,
+#list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hover);
+}
+
+
+/* 개별 기록 */
+.history-item {
+  padding: 12px;
+
+  border-bottom: 1px solid var(--color-border);
+
+  font-size: 14px;
+
+  background: var(--color-card);
+}
+
+
+
+/*
+   기록 초기화 영역
+
+   리스트가 스크롤되어도
+   버튼은 항상 아래에 유지됨.
+*/
+
+.history-bottom {
+  flex-shrink: 0;
+
+  padding: 10px;
+
+  border-top: 3px solid var(--color-border);
+
+  background: var(--color-card);
+
+  display: flex;
+
+  justify-content: center;
+}
+
+
+/* 기록 초기화 버튼 */
+.history-bottom button {
+  padding: 10px 15px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+
+  background: var(--color-primary);
+  color: var(--color-sub-text);
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+
+.history-bottom button:hover {
+  animation: wobble-hor-bottom 0.8s both;
+}
