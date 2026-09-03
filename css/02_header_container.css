@@ -65,3 +65,20 @@ body {
   text-align: center;
   margin: -5px 0 15px 0; /* 제목과의 간격을 바짝 붙이고 아래 요소와 여백 확보 */
 }
+
+
+/* =========================================================
+   광고
+========================================================= */
+
+
+.ad-wrapper {
+  width: 100%;
+  max-width: 1000px; /* 사이트 본문 최대 너비에 맞게 조절 */
+  margin: 20px auto;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
