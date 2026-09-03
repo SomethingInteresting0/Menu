@@ -170,7 +170,7 @@
  .random-recommendation {
     width: 90% !important; /* 모바일 화면 좌우 갭 거의 없이 정중앙 조율 */
     padding: 14px 12px !important; /* 패딩 축소하여 세로/가로 공간 확보 */
-    margin: 0px auto 5px auto !important; /* ⚡ 선택된 태그와 탭 영역 사이에 간격 부여 */
+    margin: 0px auto !important; /* ⚡ 선택된 태그와 탭 영역 사이에 간격 부여 */
     border-radius: 12px !important;
   }
 
@@ -207,12 +207,18 @@
   }
 
   .random-description {
-    font-size: 12px !important;
-    line-height: 1.4 !important;
+    font-size: 11px !important;
   }
 
   .random-tags {
     justify-content: center !important; /* 태그 중앙 정렬 */
+  }
+
+  .random-tag {
+    font-size: 10px;
+    padding: 4px;
+    
+    border-radius: 5px;
   }
 
   /* --- 5. 탭 및 결과 카드리스트 --- */
@@ -236,6 +242,7 @@
   #result {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 8px;
+    padding: 5px;
 
   }
 
