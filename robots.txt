@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+https://pickmenu.kr/sitemap.xml
