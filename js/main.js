@@ -34,6 +34,12 @@ const DOM = {
 
   // 토스트
   toast: document.getElementById("toast"),
+
+  // footer popup
+  privacyModal: document.getElementById("privacyModal"),
+  privacyOpenBtn: document.getElementById("privacyOpenBtn"),
+  privacyCloseBtn: document.getElementById("privacyCloseBtn"),
+  privacyConfirmBtn: document.getElementById("privacyConfirmBtn"),
 };
 
 /* =========================
@@ -78,6 +84,37 @@ window.addEventListener('resize', () => {
       details.setAttribute('open', '');
     });
   }
+});
+
+
+/* =========================
+   개인정보 처리 방침 팝업
+========================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+  function setupModal(openBtnId, modalId, closeBtnId, confirmBtnId) {
+    const openBtn = document.getElementById(openBtnId);
+    const modal = document.getElementById(modalId);
+    const closeBtn = document.getElementById(closeBtnId);
+    const confirmBtn = document.getElementById(confirmBtnId);
+
+    if (!openBtn || !modal) return;
+
+    const open = () => modal.classList.add('active');
+    const close = () => modal.classList.remove('active');
+
+    openBtn.addEventListener('click', open);
+    if (closeBtn) closeBtn.addEventListener('click', close);
+    if (confirmBtn) confirmBtn.addEventListener('click', close);
+
+    // 배경 클릭 시 닫기
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) close();
+    });
+  }
+
+  setupModal('privacyOpenBtn', 'privacyModal', 'privacyCloseBtn', 'privacyConfirmBtn');
+  setupModal('termsOpenBtn', 'termsModal', 'termsCloseBtn', 'termsConfirmBtn');
 });
 
 /* =========================
